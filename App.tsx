@@ -1,6 +1,13 @@
 import React, {useState} from 'react';
 import Navigator from './navigations';
-import {Appbar, Icon, MD3Colors, Provider, Searchbar} from 'react-native-paper';
+import {
+  Appbar,
+  Avatar,
+  Icon,
+  MD3Colors,
+  Provider,
+  Searchbar,
+} from 'react-native-paper';
 import Lens from './src/svg/Lens';
 import {Image, TouchableOpacity, View} from 'react-native';
 
@@ -71,7 +78,6 @@ export default function App() {
           </View>
         )}
       </Appbar.Header>
-
       <Navigator />
     </Provider>
   );

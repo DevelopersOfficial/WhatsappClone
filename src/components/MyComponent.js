@@ -4,7 +4,7 @@ import {Avatar, Button, Card, Text} from 'react-native-paper';
 const LeftContent = props => <Avatar.Icon {...props} icon="folder" />;
 
 const MyComponent = () => (
-  <Card>
+  <Card style={{marginBottom: 5}}>
     <Card.Title
       title="Card Title"
       subtitle="Card Subtitle"

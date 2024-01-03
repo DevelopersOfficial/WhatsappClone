@@ -1,10 +1,10 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import MyComponent from '../src/components/MyComponent';
 
 export default function Home() {
   return (
-    <View style={{padding: 10}}>
+    <ScrollView style={{padding: 10}}>
       <View
         style={{
           width: '100%',
@@ -29,7 +29,9 @@ export default function Home() {
           );
         })}
       </View>
-      <MyComponent />
-    </View>
+      {[1, 2, 3, 4, 5, 6, 7, 8].map(elem => {
+        return <MyComponent key={elem} />;
+      })}
+    </ScrollView>
   );
 }

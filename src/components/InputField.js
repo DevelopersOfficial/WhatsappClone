@@ -6,6 +6,7 @@ const InputField = () => {
 
   return (
     <TextInput
+      style={{width: '100%'}}
       mode="outlined"
       label="Outlined input"
       placeholder="Type something"
