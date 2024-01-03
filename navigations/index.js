@@ -2,9 +2,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import Home from '../screens/Home';
-import {Avatar} from 'react-native-paper';
 import {Image, TouchableOpacity} from 'react-native';
 import AuthModal from '../src/components/AuthModal';
+import About from '../screens/About';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +19,7 @@ export default function Navigator() {
           headerShown: false,
         }}>
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="About" component={About} />
       </Stack.Navigator>
       <TouchableOpacity
         style={{bottom: 10, position: 'absolute', right: 10}}

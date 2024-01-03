@@ -1,10 +1,20 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Image, Text, View} from 'react-native';
 
 export default function About() {
   return (
-    <View>
-      <Text>About</Text>
+    <View
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        width: '100%',
+        alignItems: 'center',
+        height: '90%',
+      }}>
+      <Image
+        style={{width: 300, height: 300}}
+        source={require('../src/assets/money.png')}
+      />
     </View>
   );
 }

@@ -3,8 +3,8 @@ import {Avatar, Button, Card, Text} from 'react-native-paper';
 
 const LeftContent = props => <Avatar.Icon {...props} icon="folder" />;
 
-const MyComponent = () => (
-  <Card style={{marginBottom: 5}}>
+const MyComponent = ({onclick}) => (
+  <Card onPress={onclick} style={{marginBottom: 5}}>
     <Card.Title
       title="Card Title"
       subtitle="Card Subtitle"

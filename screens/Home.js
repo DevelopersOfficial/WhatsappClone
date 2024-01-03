@@ -2,7 +2,7 @@ import React from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import MyComponent from '../src/components/MyComponent';
 
-export default function Home() {
+export default function Home(props) {
   return (
     <ScrollView style={{padding: 10}}>
       <View
@@ -30,7 +30,14 @@ export default function Home() {
         })}
       </View>
       {[1, 2, 3, 4, 5, 6, 7, 8].map(elem => {
-        return <MyComponent key={elem} />;
+        return (
+          <MyComponent
+            key={elem}
+            onclick={() => {
+              props.navigation.navigate('About');
+            }}
+          />
+        );
       })}
     </ScrollView>
   );
