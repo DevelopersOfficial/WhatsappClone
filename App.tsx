@@ -1,118 +1,78 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, {useState} from 'react';
+import Navigator from './navigations';
+import {Appbar, Icon, MD3Colors, Provider, Searchbar} from 'react-native-paper';
+import Lens from './src/svg/Lens';
+import {Image, TouchableOpacity, View} from 'react-native';
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+export default function App() {
+  const [openSearchBar, setopenSearchBar] = useState(false);
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <Provider>
+      <Appbar.Header
+        {...(openSearchBar
+          ? {
+              style: {
+                display: 'flex',
+                flexDirection: 'column',
+                height: 100,
+                backgroundColor: 'tomato',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: 5,
+              },
+            }
+          : {
+              style: {
+                backgroundColor: 'tomato',
+              },
+            })}>
+        <Appbar.Content title="Awesome App" />
+        {!openSearchBar && (
+          <Appbar.Action
+            icon={() => (
+              <Image
+                style={{height: 30, width: 30}}
+                source={require('./src/assets/search.png')}
+              />
+            )}
+            onPress={() => {
+              setopenSearchBar(true);
+            }}
+          />
+        )}
+        {openSearchBar && (
+          <View style={{position: 'relative'}}>
+            <Searchbar
+              placeholder="Search"
+              // onChangeText={onChangeSearch}
+              value=""
+              style={{width: '100%', backgroundColor: 'white'}}
+              icon={() => (
+                <Image
+                  style={{height: 30, width: 30}}
+                  source={require('./src/assets/searchGray.png')}
+                />
+              )}
+            />
+            <TouchableOpacity
+              style={{position: 'absolute', right: 10, top: 13}}
+              onPress={() => {
+                setopenSearchBar(false);
+              }}>
+              <Image
+                style={{
+                  height: 30,
+                  width: 30,
+                }}
+                source={require('./src/assets/clear.png')}
+              />
+            </TouchableOpacity>
+          </View>
+        )}
+      </Appbar.Header>
+
+      <Navigator />
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
