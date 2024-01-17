@@ -10,6 +10,7 @@ import {
 } from 'react-native-paper';
 import Lens from './src/svg/Lens';
 import {Image, TouchableOpacity, View} from 'react-native';
+import TabNavigator from './navigations/tabNavigation';
 
 export default function App() {
   const [openSearchBar, setopenSearchBar] = useState(false);

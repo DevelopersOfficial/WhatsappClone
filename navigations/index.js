@@ -1,10 +1,11 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import Home from '../screens/Home';
-import {Image, TouchableOpacity} from 'react-native';
 import AuthModal from '../src/components/AuthModal';
-import About from '../screens/About';
+import Home from '../screens/Home';
+import Message from '../screens/Message';
+import PlayStatus from '../screens/PlayStatus';
+import AllContacts from '../screens/AllContacts';
 
 const Stack = createStackNavigator();
 
@@ -13,23 +14,46 @@ export default function Navigator() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="About" component={About} />
-      </Stack.Navigator>
-      <TouchableOpacity
-        style={{bottom: 10, position: 'absolute', right: 10}}
-        onPress={() => {
-          setVisible(true);
-        }}>
-        <Image
-          style={{
-            height: 60,
-            width: 60,
+      <Stack.Navigator>
+        <Stack.Screen
+          options={{
+            headerShown: false,
           }}
-          source={require('../src/assets/plus.png')}
+          name="Home"
+          component={Home}
         />
-      </TouchableOpacity>
+        <Stack.Screen
+          options={{
+            headerStyle: {
+              backgroundColor: '#008169',
+            },
+            headerTintColor: 'white',
+          }}
+          name="Message"
+          component={Message}
+        />
+        <Stack.Screen
+          options={{
+            headerStyle: {
+              backgroundColor: '#008169',
+            },
+            headerTintColor: 'white',
+          }}
+          name="AllContacts"
+          component={AllContacts}
+        />
+        <Stack.Screen
+          options={{
+            headerStyle: {
+              backgroundColor: '#008169',
+            },
+            headerTintColor: 'white',
+          }}
+          name="PlayStatus"
+          component={PlayStatus}
+        />
+      </Stack.Navigator>
+
       <AuthModal visible={visible} setVisible={setVisible} />
     </NavigationContainer>
   );
