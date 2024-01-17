@@ -24,7 +24,6 @@ export default function AllContacts() {
               console.warn('Permission to access contacts was denied');
             } else {
               setContacts(contacts);
-              console.log(contacts, 'TETST');
             }
           });
         } else {
